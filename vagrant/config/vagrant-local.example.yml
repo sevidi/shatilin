@@ -1,5 +1,5 @@
 # Your personal GitHub token
-github_token: <your-personal-github-token>
+github_token: 7bcfcf3e06c72cdbdede2ad181c13e345b903c93
 # Read more: https://github.com/blog/1509-personal-api-tokens
 # You can generate it here: https://github.com/settings/tokens
 
@@ -10,10 +10,10 @@ timezone: Europe/London
 box_check_update: false
 
 # Virtual machine name
-machine_name: y2aa
+machine_name: shatilin
 
 # Virtual machine IP
-ip: 192.168.83.137
+ip: 192.168.83.140
 
 # Virtual machine CPU cores number
 cpus: 1
