@@ -7,9 +7,6 @@ return [
         'assetManager' => [
             'basePath' => __DIR__ . '/../web/assets',
         ],
-        'session' => [
-            'cookieParams' => new ReplaceArrayValue(['httpOnly' => true]),
-        ],
         'urlManager' => [
             'showScriptName' => true,
         ],
