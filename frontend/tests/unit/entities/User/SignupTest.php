@@ -1,7 +1,7 @@
 <?php
 
 
-namespace frontend\tests\unit\entities;
+namespace frontend\tests\unit\entities\User;
 
 use Codeception\Test\Unit;
 use common\entities\User;

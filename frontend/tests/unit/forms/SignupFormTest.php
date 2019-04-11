@@ -32,25 +32,7 @@ class SignupFormTest extends Unit
             'password' => 'some_password',
         ]);
 
-        $user = $model->signup();
-        expect($user)->true();
-
-        /** @var \common\entities\User $user */
-        $user = $this->tester->grabRecord('common\entities\User', [
-            'username' => 'some_username',
-            'email' => 'some_email@example.com',
-            'status' => User::STATUS_ACTIVE
-        ]);
-
-        $this->tester->seeEmailIsSent();
-
-        $mail = $this->tester->grabLastSentEmail();
-
-        expect($mail)->isInstanceOf('yii\mail\MessageInterface');
-        expect($mail->getTo())->hasKey('some_email@example.com');
-        expect($mail->getFrom())->hasKey(\Yii::$app->params['supportEmail']);
-        expect($mail->getSubject())->equals('Account registration at ' . \Yii::$app->name);
-        expect($mail->toString())->contains($user->verification_token);
+        expect_that($model->validate());
     }
 
     public function testNotCorrectSignup()
@@ -61,7 +43,7 @@ class SignupFormTest extends Unit
             'password' => 'some_password',
         ]);
 
-        expect_not($model->signup());
+        expect_not($model->validate());
         expect_that($model->getErrors('username'));
         expect_that($model->getErrors('email'));
 
