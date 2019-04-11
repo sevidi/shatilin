@@ -41,6 +41,12 @@ class User extends ActiveRecord implements IdentityInterface
         $user->generateEmailVerificationToken();
         return $user;
     }
+
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
+
     /**
      * {@inheritdoc}
      */
