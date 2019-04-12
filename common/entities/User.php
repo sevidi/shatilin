@@ -36,9 +36,8 @@ class User extends ActiveRecord implements IdentityInterface
         $user->setPassword($password);
         $user->created_at = time();
         $user->status = self::STATUS_WAIT;
-        $user->generateEmailConfirmToken();
+        $user->email_confirm_token = Yii::$app->security->generateRandomString();
         $user->generateAuthKey();
-        $user->generateEmailVerificationToken();
         return $user;
     }
 
@@ -48,7 +47,7 @@ class User extends ActiveRecord implements IdentityInterface
             throw new \DomainException('User is already active.');
         }
         $this->status = self::STATUS_ACTIVE;
-        $this->removeEmailConfirmToken();
+        $this->email_confirm_token = null;
     }
 
     public function requestPasswordReset(): void
@@ -234,38 +233,5 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
-
-    /**
-     * Generates new password reset token
-     */
-    private function generatePasswordResetToken()
-    {
-        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
-    }
-
-    /**
-     * Removes password reset token
-     */
-    private function removePasswordResetToken()
-    {
-        $this->password_reset_token = null;
-    }
-
-    /**
-     * Generates new password reset token
-     */
-    private function generateEmailConfirmToken()
-    {
-        $this->email_confirm_token = Yii::$app->security->generateRandomString();
-    }
-
-    /**
-     * Removes email confirm token
-     */
-    private function removeEmailConfirmToken()
-    {
-        $this->email_confirm_token = null;
-    }
-
 
 }
