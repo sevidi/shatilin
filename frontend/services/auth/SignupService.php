@@ -1,6 +1,5 @@
 <?php
 
-
 namespace frontend\services\auth;
 
 use common\entities\User;
@@ -13,12 +12,11 @@ class SignupService
     private $mailer;
     private $users;
 
-    public function __construct(MailerInterface $mailer)
+    public function __construct(UserRepository $users, MailerInterface $mailer)
     {
         $this->mailer = $mailer;
-
+        $this->users = $users;
     }
-
     public function signup(SignupForm $form): void
     {
         $user = User::requestSignup(
@@ -27,7 +25,6 @@ class SignupService
             $form->password
         );
         $this->users->save($user);
-
         $sent = $this->mailer
             ->compose(
                 ['html' => 'emailConfirmToken-html', 'text' => 'emailConfirmToken-text'],
@@ -40,16 +37,13 @@ class SignupService
             throw new \RuntimeException('Email sending error.');
         }
     }
-
     public function confirm($token): void
     {
         if (empty($token)) {
             throw new \DomainException('Empty confirm token.');
         }
-
         $user = $this->users->getByEmailConfirmToken($token);
         $user->confirmSignup();
         $this->users->save($user);
     }
-
 }
