@@ -3,6 +3,7 @@
 
 namespace frontend\services\auth;
 
+
 use common\entities\User;
 use frontend\forms\SignupForm;
 
@@ -15,10 +16,11 @@ class SignupService
             $form->email,
             $form->password
         );
-        if (!$user->save()) {
+        if (!$user->save()&& $this->sendEmail($user)) {
             throw new \RuntimeException('Saving error.');
         }
         return $user;
     }
+
 
 }
