@@ -3,7 +3,7 @@ namespace core\forms\auth;
 
 
 use yii\base\Model;
-use core\entities\User;
+use core\entities\User\User;
 
 
 class PasswordResetRequestForm extends Model

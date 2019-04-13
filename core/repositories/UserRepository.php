@@ -3,8 +3,8 @@
 
 namespace core\repositories;
 
-use core\entities\User;
-use core\repositories\NotFoundException;
+use core\entities\User\User;
+
 
 class UserRepository
 {
