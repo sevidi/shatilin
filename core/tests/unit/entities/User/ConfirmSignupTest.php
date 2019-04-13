@@ -1,11 +1,9 @@
 <?php
 
-
-namespace common\tests\unit\entities\User;
+namespace shop\tests\unit\entities\User;
 
 use Codeception\Test\Unit;
-use core\entities\User;
-
+use shop\entities\User;
 
 class ConfirmSignupTest extends Unit
 {
@@ -30,5 +28,4 @@ class ConfirmSignupTest extends Unit
         $this->expectExceptionMessage('User is already active.');
         $user->confirmSignup();
     }
-
 }

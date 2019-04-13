@@ -9,7 +9,7 @@ class SignupCest
     protected $formId = '#form-signup';
     public function _before(FunctionalTester $I)
     {
-        $I->amOnRoute('site/signup');
+        $I->amOnRoute('auth/signup/request');
     }
 
     public function signupWithEmptyFields(FunctionalTester $I)
@@ -43,7 +43,7 @@ class SignupCest
             'SignupForm[email]' => 'tester.email@example.com',
             'SignupForm[password]' => 'tester_password',
         ]);
-        $I->seeRecord('common\entities\User', [
+        $I->seeRecord('core\entities\User', [
             'username' => 'tester',
             'email' => 'tester.email@example.com',
         ]);
