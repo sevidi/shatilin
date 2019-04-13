@@ -75,7 +75,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function isActive(): bool
     {
-        return $this->status === self::STATUS_INACTIVE;
+        return $this->status === self::STATUS_ACTIVE;
     }
 
     /**
