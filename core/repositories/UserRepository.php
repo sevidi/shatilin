@@ -8,9 +8,23 @@ use core\entities\User\User;
 
 class UserRepository
 {
+    /**
+     * @param $value
+     * @return User|null
+     */
     public function findByUsernameOrEmail($value): ?User
     {
         return User::find()->andWhere(['or', ['username' => $value], ['email' => $value]])->one();
+    }
+
+    /**
+     * @param $network
+     * @param $identity
+     * @return array|User|\yii\db\ActiveRecord|null
+     */
+    public function findByNetworkIdentity($network, $identity) :?User
+    {
+        return User::find()->joinWith('networks n')->andWhere(['n.network' => $network, 'n.identity' => $identity])->one();
     }
 
     public function getByEmailConfirmToken($token): User
@@ -40,6 +54,10 @@ class UserRepository
         }
     }
 
+    /**
+     * @param array $condition
+     * @return User
+     */
     private function getBy(array $condition): User
     {
         if (!$user = User::find()->andWhere($condition)->limit(1)->one()) {
