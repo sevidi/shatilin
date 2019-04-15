@@ -1,5 +1,7 @@
 <?php
 
+use core\entities\User\User;
+use core\helpers\UserHelper;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -29,9 +31,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
                     'id',
                     'created_at:datetime',
-                    'username',
+                    [
+                        'attribute' => 'username',
+                        'value' => function (User $model) {
+                            return Html::a(Html::encode($model->username), ['view', 'id' => $model->id]);
+                        },
+                        'format' => 'raw',
+                    ],
                     'email:email',
-                    'status',
+                    [
+                        'attribute' => 'status',
+                        'filter' => UserHelper::statusList(),
+                        'value' => function (User $model) {
+                            return UserHelper::statusLabel($model->status);
+                        },
+                        'format' => 'raw',
+                    ],
                     ['class' => ActionColumn::class],
                 ],
             ]); ?>
