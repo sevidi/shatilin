@@ -3,11 +3,11 @@
 
 namespace backend\controllers;
 
-use shop\services\auth\AuthService;
+use core\services\auth\AuthService;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use shop\forms\auth\LoginForm;
+use core\forms\auth\LoginForm;
 
 class AuthController extends Controller
 {
