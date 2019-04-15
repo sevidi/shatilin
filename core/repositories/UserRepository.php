@@ -10,9 +10,9 @@ class UserRepository
 {
     /**
      * @param $value
-     * @return User|null
+     * @return array|User|\yii\db\ActiveRecord|null
      */
-    public function findByUsernameOrEmail($value): ?User
+    public function findByUsernameOrEmail($value)
     {
         return User::find()->andWhere(['or', ['username' => $value], ['email' => $value]])->one();
     }
@@ -22,9 +22,14 @@ class UserRepository
      * @param $identity
      * @return array|User|\yii\db\ActiveRecord|null
      */
-    public function findByNetworkIdentity($network, $identity) :?User
+    public function findByNetworkIdentity($network, $identity): ?User
     {
         return User::find()->joinWith('networks n')->andWhere(['n.network' => $network, 'n.identity' => $identity])->one();
+    }
+
+    public function get($id): User
+    {
+        return $this->getBy(['id' => $id]);
     }
 
     public function getByEmailConfirmToken($token): User
