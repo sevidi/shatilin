@@ -7,7 +7,7 @@ use core\services\contact\ContactService;
 use yii\base\BootstrapInterface;
 use yii\mail\MailerInterface;
 
-class SetUp implements BootstrapInterface
+class  SetUp implements BootstrapInterface
 {
     public function bootstrap($app): void
     {
