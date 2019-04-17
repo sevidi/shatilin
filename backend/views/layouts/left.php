@@ -38,6 +38,7 @@ use dmstr\widgets\Menu;
                     ['label' => 'Management', 'options' => ['class' => 'header']],
                     ['label' => 'Blog', 'icon' => 'folder', 'items' => [
                         ['label' => 'Tags', 'icon' => 'file-o', 'url' => ['/blog/tag/index'], 'active' => $this->context->id == 'blog/tag'],
+                        ['label' => 'Categories', 'icon' => 'file-o', 'url' => ['/blog/category/index'], 'active' => $this->context->id == 'blog/category'],
                     ]],
                     ['label' => 'Users', 'icon' => 'user', 'url' => ['/user/index'], 'active' => $this->context->id == 'user/index'],
                 ],
