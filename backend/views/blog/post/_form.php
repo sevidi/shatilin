@@ -22,7 +22,7 @@ use yii\bootstrap\ActiveForm;
                 <div class="box-header with-border">Common</div>
                 <div class="box-body">
                     <?= $form->field($model, 'categoryId')->dropDownList($model->categoriesList(), ['prompt' => '']) ?>
-                    <?= $form->field($model, 'userId')->dropDownList($model->usersList(), ['prompt' => ''])?>
+                    <?= $form->field($model, 'userId')->hiddenInput(['value'=> Yii::$app->user->identity->getId()])->label(false);?>
 
                 </div>
             </div>
