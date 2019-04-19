@@ -1,0 +1,1 @@
+2019/04/18 17:28:35 [error] 1890#1890: *255 open() "/app/static/favicon.ico" failed (2: No such file or directory), client: 192.168.83.1, server: static.shatilin.com, request: "GET /favicon.ico HTTP/1.1", host: "static.shatilin.com", referrer: "http://static.shatilin.com/origin/posts/3.jpg"

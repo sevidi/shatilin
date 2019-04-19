@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18c2d82d5e46cef004dbc142b1f7160f",
+    "content-hash": "c2d7b80f77022e93ee7ed0ea6ca36204",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -71,6 +71,21 @@
             ]
         },
         {
+            "name": "bower-asset/font-awesome",
+            "version": "5.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "299abb1fb101f4e1cfd1d2fccc461782ff84b13d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/299abb1fb101f4e1cfd1d2fccc461782ff84b13d",
+                "reference": "299abb1fb101f4e1cfd1d2fccc461782ff84b13d"
+            },
+            "type": "bower-asset"
+        },
+        {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
             "source": {
@@ -108,6 +123,42 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bower-asset/magnific-popup",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:dimsemenov/Magnific-Popup.git",
+                "reference": "6b7a8088783cbce01034414c1fd2d8e1889093ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dimsemenov/Magnific-Popup/zipball/6b7a8088783cbce01034414c1fd2d8e1889093ae",
+                "reference": "6b7a8088783cbce01034414c1fd2d8e1889093ae"
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8.0"
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/owl.carousel",
+            "version": "2.3.4",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:OwlFonk/OwlCarousel2.git",
+                "reference": "af851f9b567630d115930abd5480ffebccc72372"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OwlFonk/OwlCarousel2/zipball/af851f9b567630d115930abd5480ffebccc72372",
+                "reference": "af851f9b567630d115930abd5480ffebccc72372"
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8.3"
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/punycode",

@@ -7,14 +7,16 @@ use core\entities\Meta;
 use core\entities\Blog\Category;
 use core\forms\manage\Blog\CategoryForm;
 use core\repositories\Blog\CategoryRepository;
+use core\repositories\Blog\PostRepository;
 
 class CategoryManageService
 {
     private $categories;
 
-    public function __construct(CategoryRepository $categories)
+    public function __construct(CategoryRepository $categories, PostRepository $posts)
     {
         $this->categories = $categories;
+        $this->posts = $posts;
     }
 
     /**
@@ -64,6 +66,9 @@ class CategoryManageService
     public function remove($id): void
     {
         $category = $this->categories->get($id);
+        if ($this->posts->existsByCategory($category->id)) {
+            throw new \DomainException('Unable to remove category with posts.');
+        }
         $this->categories->remove($category);
     }
 
