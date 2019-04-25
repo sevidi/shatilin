@@ -10,7 +10,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\authclient\AuthAction;
 
-class NetworkController extends Controller
+class   NetworkController extends Controller
 {
     private $service;
 
@@ -35,9 +35,10 @@ class NetworkController extends Controller
         $network = $client->getId();
         $attributes = $client->getUserAttributes();
         $identity = ArrayHelper::getValue($attributes, 'id');
+        $name =  ArrayHelper::getValue($attributes, 'last_name');
 
         try {
-            $user = $this->service->auth($network, $identity);
+            $user = $this->service->auth($network, $identity, $name);
             Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
         } catch (\DomainException $e) {
             Yii::$app->errorHandler->logException($e);

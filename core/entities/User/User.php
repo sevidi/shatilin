@@ -9,6 +9,7 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
+
 /**
  * User model
  *
@@ -73,9 +74,10 @@ class User extends ActiveRecord implements IdentityInterface
         $this->email_confirm_token = null;
     }
 
-    public static function signupByNetwork($network, $identity): self
+    public static function signupByNetwork($network, $identity, $name): self
     {
         $user = new User();
+        $user->username = $name;
         $user->created_at = time();
         $user->status = self::STATUS_ACTIVE;
         $user->generateAuthKey();
@@ -83,7 +85,7 @@ class User extends ActiveRecord implements IdentityInterface
         return $user;
     }
 
-    public function attachNetwork($network, $identity): void
+    public function attachNetwork($network, $identity, $name): void
     {
         $networks = $this->networks;
         foreach ($networks as $current) {
@@ -91,7 +93,7 @@ class User extends ActiveRecord implements IdentityInterface
                 throw new \DomainException('Network is already attached.');
             }
         }
-        $networks[] = Network::create($network, $identity);
+        $networks[] = Network::create($network, $identity, $name);
         $this->networks = $networks;
     }
 

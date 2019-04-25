@@ -24,25 +24,27 @@ class NetworkService
      * @param $username
      * @param $network
      * @param $identity
+     * @param $name *
      * @return User
      */
-    public function auth($network, $identity): User
+    public function auth($network, $identity, $name): User
     {
+
         if ($user = $this->users->findByNetworkIdentity($network, $identity)) {
                 return $user;
             }
-        $user = User::signupByNetwork($network, $identity);
+        $user = User::signupByNetwork($network, $identity, $name);
         $this->users->save($user);
         return $user;
     }
 
-    public function attach($id, $network, $identity): void
+    public function attach($id, $network, $identity, $name): void
     {
         if ($this->users->findByNetworkIdentity($network, $identity)) {
             throw new \DomainException('Network is already signed up.');
         }
         $user = $this->users->get($id);
-        $user->attachNetwork($network, $identity);
+        $user->attachNetwork($network, $identity, $name);
         $this->users->save($user);
     }
 

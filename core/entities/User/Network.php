@@ -2,6 +2,7 @@
 
 
 namespace core\entities\User;
+
 use Webmozart\Assert\Assert;
 use yii\db\ActiveRecord;
 
@@ -9,10 +10,16 @@ use yii\db\ActiveRecord;
  * @property integer $user_id
  * @property string $identity
  * @property string $network
+ * @property string first_name
  */
 
 class Network extends ActiveRecord
 {
+    /**
+     * @param $network
+     * @param $identity
+     * @return Network
+     */
     public static function create($network, $identity): self
     {
         Assert::notEmpty($network);
@@ -21,6 +28,7 @@ class Network extends ActiveRecord
         $item = new static();
         $item->network = $network;
         $item->identity = $identity;
+
 
         return $item;
     }

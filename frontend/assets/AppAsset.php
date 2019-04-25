@@ -12,11 +12,14 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/animate.min.css',
         'css/site.css',
+
     ];
     public $js = [
     ];
     public $depends = [
+        'frontend\assets\FontAwesomeAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];

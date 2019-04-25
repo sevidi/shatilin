@@ -12,7 +12,7 @@ class UserRepository
      * @param $value
      * @return array|User|\yii\db\ActiveRecord|null
      */
-    public function findByUsernameOrEmail($value)
+    public function findByUsernameOrEmail($value): ?User
     {
         return User::find()->andWhere(['or', ['username' => $value], ['email' => $value]])->one();
     }

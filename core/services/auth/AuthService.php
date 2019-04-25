@@ -3,7 +3,6 @@
 
 namespace core\services\auth;
 
-
 use core\entities\User\User;
 use core\forms\auth\LoginForm;
 use core\repositories\UserRepository;
