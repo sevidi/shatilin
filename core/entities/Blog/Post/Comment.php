@@ -62,7 +62,7 @@ class Comment extends ActiveRecord
         return $this->parent_id == $id;
     }
 
-    public function getPost(): PostQuery
+    public function getPost(): \yii\db\ActiveQuery
     {
         return $this->hasOne(Post::class, ['id' => 'post_id']);
     }
