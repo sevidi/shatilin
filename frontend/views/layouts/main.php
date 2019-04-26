@@ -11,10 +11,15 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use yii\helpers\Url;
 
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="ltr" lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="ltr" lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
@@ -22,24 +27,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-
-    <!-- favicon icon -->
-    <link rel="shortcut icon" href="assets/images/index.html">
-
-    <title>Treasure</title>
-
-    <!-- common css -->
-
-
-
-    <!-- HTML5 shim and Respond.js IE9 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.js"></script>
-    <script src="assets/js/respond.js"></script>
-    <![endif]-->
-
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="image/icon.png">
     <?php $this->head() ?>
 
 </head>
@@ -77,6 +66,7 @@ AppAsset::register($this);
                 <?php
                 NavBar::begin([
                     'options' => [
+                        'screenReaderToggleText' => 'Menu',
                         'id' => 'menu',
                         'class' => 'navbar-inverse',
 
@@ -104,7 +94,6 @@ AppAsset::register($this);
                 }
                 echo Nav::widget([
                     'options' => [
-                            'id' => 'menu',
                         'class' => 'navbar navbar-nav',
                         ],
                     'items' => $menuItems,
@@ -115,10 +104,13 @@ AppAsset::register($this);
         </nav>
 
 </header>
-
-
-
-<?= $content ?>
+<div class="container">
+    <?= Breadcrumbs::widget([
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
+    <?= Alert::widget() ?>
+    <?= $content ?>
+</div>
 <!--footer start-->
 
 <footer class="footer-widget-section">

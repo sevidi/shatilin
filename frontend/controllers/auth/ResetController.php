@@ -12,6 +12,8 @@ use core\forms\auth\ResetPasswordForm;
 
 class ResetController extends Controller
 {
+    public $layout = 'cabinet';
+
     private $service;
 
     public function __construct($id, $module, PasswordResetService $service, $config = [])

@@ -22,3 +22,4 @@ use yii\helpers\Url;
         </div>
     </aside>
 </div>
+<?php $this->endContent() ?>

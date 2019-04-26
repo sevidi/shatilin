@@ -16,7 +16,9 @@ return [
     'bootstrap' => [
         'log',
         'common\bootstrap\SetUp',
+        'frontend\bootstrap\SetUp',
     ],
+    'layout' => 'blank',
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
