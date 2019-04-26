@@ -1696,6 +1696,13 @@ p.go-back-home a:hover {
    min-height: auto;
  }
 
+ /* post */
+.blog-posts-item {
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+}
+
 /* alert */
 .alert {
     padding: 8px 14px 8px 14px;
