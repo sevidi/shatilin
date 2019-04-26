@@ -1693,7 +1693,7 @@ p.go-back-home a:hover {
 }
  .site-signup, .site-login, .site-request-password-reset,
  .site-about, .site-reset-password, .site-contact, .cabinet-index{
-   min-height: 700px;
+   min-height: auto;
  }
 
 /* alert */
